@@ -1,0 +1,117 @@
+.LivroListaItem {
+    font-family: "Exo";
+    background: rgba(86, 86, 86, 0.402);
+    border-radius: 10px;
+    padding: 10px;
+    width: 315px;
+    display: flex;
+    margin-top: 10rem;
+    margin-bottom: -6rem;
+  }
+  
+  @media (max-width: 400px) {
+    .LivroListaItem {
+      width: 210px;
+      height: 180px;
+    }
+  }
+  
+  .LivroListaItem > div {
+    display: flex;
+    justify-content: space-between;
+    flex-direction: column;
+    margin: 0.3rem;
+  }
+  
+  .LivroListaItem__titulo {
+    font-size: 1.5em;
+    font-weight: 700;
+    line-height: 100%;
+    margin-bottom: 0.5rem;
+  }
+  
+  .LivroListaItem__descricao {
+    font-size: 0.85em;
+  }
+  
+  .LivroListaItem__autor{
+    font-size: 1rem;
+    margin-bottom: 0.5rem;
+  }
+
+  .LivroListaItem__preco {
+    color: #01d9ff;
+    margin-bottom: 0.5rem;
+  }
+
+  .LivroListaItem__capa {
+    position: relative;
+    width: 180px;
+    height: 310px;
+    margin-top: 10px;
+    margin-right: -45px;
+    border-radius: 10px;
+  }
+  
+  .Acoes {
+    display: flex;
+    justify-content: space-between;
+  }
+  
+  .Acoes__adicionar,
+  .Acoes__remover {
+    border: none;
+    color: white;
+    border-radius: 5px;
+    font-family: "Exo", sans-serif;
+    padding: 5px;
+    max-width: 280px;
+    text-align: center;
+    font-weight: 700;
+    text-transform: uppercase;
+    cursor: pointer;
+    width: 50%;
+    margin-right: 10px;
+  }
+  
+  .Acoes__remover {
+    background-color: rgb(183, 2, 2);
+  }
+  
+  .Acoes__adicionar {
+    background-color: #008ea7;
+  }
+  
+  .Acoes__adicionar:hover{
+    background-color: #00d9ff;
+    color: black;
+    transition: all 0.3s ease-in-out;
+  }
+
+  .Acoes__remover:hover{
+    background-color: red;
+    color: black;
+    transition: all 0.3s ease-in-out;
+  }
+
+  .Acoes__adicionar--preencher {
+    width: 100%;
+  }
+
+  .LivroListaItem__badge {
+    background-color: #00d9ff;
+    width: 40px;
+    height: 40px;
+    padding: 0.2rem;
+    text-align: center;
+    vertical-align: middle;
+    position: relative;
+    color: black;
+    font-size: 1em;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 15%;
+    top: -11px;
+    left: -15px;
+  }

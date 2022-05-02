@@ -1,0 +1,63 @@
+.LivroDetalhesModal {
+    font-family: "Exo";
+    background: rgba(86, 86, 86, 0.402);
+    border-radius: 10px;
+    padding: 10px 0px 10px 10px;
+    max-height: 350px;
+    box-sizing: border-box;
+    width: 315px;
+    display: flex;
+    justify-content: space-around;
+    position: relative;
+  }
+  
+  .LivroDetalhesModal > div {
+    display: flex;
+    justify-content: space-between;
+    flex-direction: column;
+  }
+  
+  .LivroDetalhesModal__titulo {
+    font-size: 2em;
+    font-weight: 700;
+    line-height: 100%;
+  }
+  
+  .LivroDetalhesModal__descricao {
+    font-size: 1em;
+  }
+  
+  .LivroDetalhesModal__preco {
+    color: #01d9ff;
+    font-size: 2.5em;
+  }
+  
+  .LivroDetalhesModal__capa {
+    margin-right: -100px;
+    z-index: 0;
+  }
+  
+  @media (max-width: 400px) {
+    .LivroDetalhesModal {
+      width: 210px;
+      height: 100vh;
+    }
+  
+    .LivroDetalhesModal__capa {
+      height: 250px;
+      margin-top: 50px;
+      margin-right: -100px;
+    }
+  
+    .LivroDetalhesModal__preco {
+      font-size: 2em;
+    }
+  
+    .LivroDetalhesModal__titulo {
+      font-size: 1.5em;
+    }
+  
+    .LivroDetalhesModal__descricao {
+      font-size: 0.9em;
+    }
+  }

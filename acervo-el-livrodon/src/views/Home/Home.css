@@ -1,0 +1,28 @@
+.Home {
+  position: relative;
+  background: rgba(0, 0, 0, 0.785)
+    url("https://1.bp.blogspot.com/-ytWLnfAbNMY/Xrtw_0sn6DI/AAAAAAAAvUs/oP0xlUqH5RUJ-4HqDczPOsLTX-WhlH57ACLcBGAsYHQ/s2560/books_library_shelves_138556_1080x1920.jpg");
+  background-size: 100%;
+  background-position: 100%;
+  background-blend-mode: darken;
+  min-height: calc(100vh - 60px);
+  margin: 12px;
+  padding: 25px;
+  border-radius: 20px;
+  color: #fff;
+  box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.3);
+}
+
+.Home__container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 10rem;
+}
+
+@media (max-width: 350px) {
+  .Home__container {
+    justify-content: unset;
+  }
+}
+
