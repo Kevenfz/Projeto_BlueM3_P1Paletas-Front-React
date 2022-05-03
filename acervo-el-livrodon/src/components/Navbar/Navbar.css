@@ -44,6 +44,11 @@
   cursor: pointer;
 }
 
+.Sacola__icone:hover {
+  transform: scale(1.3);
+  transition: all 0.3s ease-in-out;
+}
+
 .Sacola__badge {
   background-color: red;
   width: 20px;
@@ -65,11 +70,18 @@
   .Header {
     max-width: 720px;
   }
+
 }
 
 @media (max-width: 840px) {
   .Header {
     max-width: 320px;
+  }
+
+  .row {
+    display: flex;
+    flex-direction: column;
+    row-gap: 20px;
   }
 }
 
@@ -80,6 +92,10 @@
 
   .row {
     column-gap: 20px;
+  }
+
+  .Logo {
+    width: 100%;
   }
 
   .Logo__titulo {

@@ -1,63 +1,72 @@
 .LivroDetalhesModal {
-    font-family: "Exo";
-    background: rgba(86, 86, 86, 0.402);
-    border-radius: 10px;
-    padding: 10px 0px 10px 10px;
-    max-height: 350px;
-    box-sizing: border-box;
-    width: 315px;
-    display: flex;
-    justify-content: space-around;
-    position: relative;
+  font-family: "Exo";
+  background: rgba(7, 7, 7, 0.546);
+  border-radius: 10px;
+  padding: 10px 0px 10px 10px;
+  max-height: 450px;
+  box-sizing: border-box;
+  width: 340px;
+  height: 415px;
+  display: flex;
+  justify-content: space-around;
+  position: relative;
+}
+
+.LivroDetalhesModal > div {
+  display: flex;
+  justify-content: space-between;
+  flex-direction: column;
+}
+
+.LivroDetalhesModal__titulo {
+  font-size: 1.5em;
+  font-weight: 700;
+  line-height: 100%;
+}
+
+.LivroDetalhesModal__descricao {
+  font-size: 1em;
+}
+
+.LivroListaItem__autor {
+  font-size: 1.2rem;
+}
+
+.LivroDetalhesModal__preco {
+  color: #01d9ff;
+  font-size: 1.5em;
+}
+
+.LivroDetalhesModal__capa {
+  position: relative;
+  width: 200px;
+  height: 350px;
+  margin-top: 10px;
+  margin-right: -55px;
+  border-radius: 10px;
+}
+
+@media (max-width: 400px) {
+  .LivroDetalhesModal {
+    width: 210px;
+    height: 100vh;
   }
-  
-  .LivroDetalhesModal > div {
-    display: flex;
-    justify-content: space-between;
-    flex-direction: column;
-  }
-  
-  .LivroDetalhesModal__titulo {
-    font-size: 1em;
-    font-weight: 700;
-    line-height: 100%;
-  }
-  
-  .LivroDetalhesModal__descricao {
-    font-size: .9em;
-  }
-  
-  .LivroDetalhesModal__preco {
-    color: #01d9ff;
-    font-size: .8em;
-  }
-  
+
   .LivroDetalhesModal__capa {
+    height: 250px;
+    margin-top: 50px;
     margin-right: -100px;
-    z-index: 0;
   }
-  
-  @media (max-width: 400px) {
-    .LivroDetalhesModal {
-      width: 210px;
-      height: 100vh;
-    }
-  
-    .LivroDetalhesModal__capa {
-      height: 250px;
-      margin-top: 50px;
-      margin-right: -100px;
-    }
-  
-    .LivroDetalhesModal__preco {
-      font-size: 2em;
-    }
-  
-    .LivroDetalhesModal__titulo {
-      font-size: 1.5em;
-    }
-  
-    .LivroDetalhesModal__descricao {
-      font-size: 0.9em;
-    }
+
+  .LivroDetalhesModal__preco {
+    font-size: 2em;
   }
+
+  .LivroDetalhesModal__titulo {
+    font-size: 1.5em;
+  }
+
+  .LivroDetalhesModal__descricao {
+    font-size: 0.9em;
+  }
+}
