@@ -2,7 +2,9 @@ import "./Navbar.css";
 import sacola from "../../assets/icons/sacola.svg";
 import logo from "../../assets/LogoElLivrodon.png";
 
+
 export function Navbar() {
+  
   return (
     <div className="Home__header Header">
       <div div className="row">
@@ -16,6 +18,7 @@ export function Navbar() {
           <span className="Logo__titulo"> El Livrodon </span>
         </div>
         <div className="Header__opcoes Opcoes">
+         
           <div className="Opcoes__sacola Sacola">
             <img
               src={sacola}

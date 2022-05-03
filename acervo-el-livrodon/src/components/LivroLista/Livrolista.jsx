@@ -9,42 +9,55 @@ export function LivroLista() {
   const [livroSelecionado, setLivroSelecionado] = useState({});
   const [livroModal, setLivroModal] = useState(false);
 
+  //função que busca os dados da nosso backend uma vez
   const getLista = async () => {
     const response = await LivroService.getLista();
     setLivros(response);
   };
 
-  const onAdd = (livroIndex) => {
-    const livro = {
-      [livroIndex]: Number(livroSelecionado[livroIndex] || 0) + 1,
+  // const getLivroById = async (livroId) => {
+  //   const response = await LivroService.getById(livroId);
+  //   setLivroModal(response);
+
+    const onAdd = (livroIndex) => {
+      const livro = {
+        [livroIndex]: Number(livroSelecionado[livroIndex] || 0) + 1,
+      };
+      setLivroSelecionado({ ...livroSelecionado, ...livro });
     };
-    setLivroSelecionado({ ...livroSelecionado, ...livro });
-  };
 
-  const onRemove = (livroIndex) => {
-    const livro = {
-      [livroIndex]: Number(livroSelecionado[livroIndex] || 0) - 1,
+    const onRemove = (livroIndex) => {
+      const livro = {
+        [livroIndex]: Number(livroSelecionado[livroIndex] || 0) - 1,
+      };
+      setLivroSelecionado({ ...livroSelecionado, ...livro });
     };
-    setLivroSelecionado({ ...livroSelecionado, ...livro });
-  };
 
-  useEffect(() => {
-    getLista();
-  }, []);
+    //Executa a função que busca os dados da nosso backend uma vez
+    useEffect(() => {
+      getLista();
+    }, []);
 
-  return (
-    <div className="LivroLista">
-      {livros.map((livro, index) => (
-        <LivroListaItem
-          key={`LivroListaItem-${index}`}
-          livro={livro}
-          quantidadeSelecionado={livroSelecionado[index]}
-          index={index}
-          onAdd={(index) => onAdd(index)}
-          onRemove={(index) => onRemove(index)}
-        />
-      ))}
-      {livroModal && <LivroDetalhesModal livro={livroModal} closeModal={() => setLivroModal(false)} />}
-    </div>
-  );
-}
+    return (
+      <div className="LivroLista">
+        {livros.map((livro, index) => (
+          <LivroListaItem
+            key={`LivroListaItem-${index}`}
+            livro={livro}
+            quantidadeSelecionado={livroSelecionado[index]}
+            index={index}
+            onAdd={(index) => onAdd(index)}
+            onRemove={(index) => {onRemove(index)}}
+            clickItem={(livroId) => setLivroModal(livro)}
+          />
+        ))}
+        {livroModal && (
+          <LivroDetalhesModal
+            livro={livroModal}
+            closeModal={() => setLivroModal(false)}
+          />
+        )}
+      </div>
+    );
+};
+

@@ -3,10 +3,12 @@
     background: rgba(86, 86, 86, 0.402);
     border-radius: 10px;
     padding: 10px;
-    width: 315px;
+    width: 290px;
     display: flex;
     margin-top: 10rem;
     margin-bottom: -6rem;
+    margin-left: 35px;
+    cursor: pointer;
   }
   
   @media (max-width: 400px) {
@@ -49,7 +51,7 @@
     width: 180px;
     height: 310px;
     margin-top: 10px;
-    margin-right: -45px;
+    margin-right: -30px;
     border-radius: 10px;
   }
   
@@ -71,7 +73,7 @@
     text-transform: uppercase;
     cursor: pointer;
     width: 50%;
-    margin-right: 10px;
+    margin-right: 5px;
   }
   
   .Acoes__remover {
@@ -100,8 +102,8 @@
 
   .LivroListaItem__badge {
     background-color: #00d9ff;
-    width: 40px;
-    height: 40px;
+    width: 20px;
+    height: 20px;
     padding: 0.2rem;
     text-align: center;
     vertical-align: middle;
@@ -112,6 +114,6 @@
     justify-content: center;
     align-items: center;
     border-radius: 15%;
-    top: -11px;
-    left: -15px;
+    top: -9px;
+    left: -10px;
   }
