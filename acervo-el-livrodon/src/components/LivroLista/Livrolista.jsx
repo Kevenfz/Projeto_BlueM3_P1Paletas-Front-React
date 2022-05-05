@@ -4,7 +4,7 @@ import { LivroListaItem } from "../LivroListaItem/LivroListaItem";
 import { LivroService } from "../../services/LivrosService";
 import { LivroDetalhesModal } from "../LivroDetalhesModal/LivroDetalhesModal";
 
-export function LivroLista() {
+export function LivroLista({ livroCriado }) {
   const [livros, setLivros] = useState([]);
   const [livroSelecionado, setLivroSelecionado] = useState({});
   const [livroModal, setLivroModal] = useState(false);
@@ -15,49 +15,60 @@ export function LivroLista() {
     setLivros(response);
   };
 
-  // const getLivroById = async (livroId) => {
-  //   const response = await LivroService.getById(livroId);
-  //   setLivroModal(response);
+  const getLivroById = async (livroId) => {
+    const response = await LivroService.getById(livroId);
+    setLivroModal(response);
+  };
 
-    const onAdd = (livroIndex) => {
-      const livro = {
-        [livroIndex]: Number(livroSelecionado[livroIndex] || 0) + 1,
-      };
-      setLivroSelecionado({ ...livroSelecionado, ...livro });
+  const onAdd = (livroIndex) => {
+    const livro = {
+      [livroIndex]: Number(livroSelecionado[livroIndex] || 0) + 1,
     };
+    setLivroSelecionado({ ...livroSelecionado, ...livro });
+  };
 
-    const onRemove = (livroIndex) => {
-      const livro = {
-        [livroIndex]: Number(livroSelecionado[livroIndex] || 0) - 1,
-      };
-      setLivroSelecionado({ ...livroSelecionado, ...livro });
+  const onRemove = (livroIndex) => {
+    const livro = {
+      [livroIndex]: Number(livroSelecionado[livroIndex] || 0) - 1,
     };
+    setLivroSelecionado({ ...livroSelecionado, ...livro });
+  };
 
-    //Executa a função que busca os dados da nosso backend uma vez
-    useEffect(() => {
-      getLista();
-    }, []);
+  const adicionaLivroNaLista = (livro) => {
+    const lista = [...livros, livro];
+    setLivros(lista);
+  };
 
-    return (
-      <div className="LivroLista">
-        {livros.map((livro, index) => (
-          <LivroListaItem
-            key={`LivroListaItem-${index}`}
-            livro={livro}
-            quantidadeSelecionado={livroSelecionado[index]}
-            index={index}
-            onAdd={(index) => onAdd(index)}
-            onRemove={(index) => {onRemove(index)}}
-            clickItem={(livroId) => setLivroModal(livro)}
-          />
-        ))}
-        {livroModal && (
-          <LivroDetalhesModal
-            livro={livroModal}
-            closeModal={() => setLivroModal(false)}
-          />
-        )}
-      </div>
-    );
-};
+  useEffect(() => {
+    if (livroCriado) adicionaLivroNaLista(livroCriado);
+  }, [livroCriado]);
 
+  //Executa a função que busca os dados da nosso backend uma vez
+  useEffect(() => {
+    getLista();
+  }, []);
+
+  return (
+    <div className="LivroLista">
+      {livros.map((livro, index) => (
+        <LivroListaItem
+          key={`LivroListaItem-${index}`}
+          livro={livro}
+          quantidadeSelecionado={livroSelecionado[index]}
+          index={index}
+          onAdd={(index) => onAdd(index)}
+          onRemove={(index) => {
+            onRemove(index);
+          }}
+          clickItem={(livroId) => getLivroById(livroId)}
+        />
+      ))}
+      {livroModal && (
+        <LivroDetalhesModal
+          livro={livroModal}
+          closeModal={() => setLivroModal(false)}
+        />
+      )}
+    </div>
+  );
+}

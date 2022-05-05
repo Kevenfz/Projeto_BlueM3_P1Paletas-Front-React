@@ -5,7 +5,7 @@
   padding: 10px 0px 10px 10px;
   max-height: 450px;
   box-sizing: border-box;
-  width: 340px;
+  width: 400px;
   height: 415px;
   display: flex;
   justify-content: space-around;
@@ -28,8 +28,8 @@
   font-size: 1em;
 }
 
-.LivroListaItem__autor {
-  font-size: 1.2rem;
+.LivroDetalhesModal__autor {
+  font-size: 1.3rem;
 }
 
 .LivroDetalhesModal__preco {

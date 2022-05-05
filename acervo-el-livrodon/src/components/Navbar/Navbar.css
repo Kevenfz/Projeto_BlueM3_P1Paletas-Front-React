@@ -102,3 +102,24 @@
     font-size: 1.5em;
   }
 }
+
+.Opcoes {
+  display: flex;
+}
+
+.Livro {
+  background: none;
+  border: none;
+
+}
+
+.Livro__icone {
+  cursor: pointer;
+}
+
+.Livro__icone:hover {
+  transform: scale(1.3);
+  transition: all 0.3s ease-in-out;
+  fill: #fff;
+
+}

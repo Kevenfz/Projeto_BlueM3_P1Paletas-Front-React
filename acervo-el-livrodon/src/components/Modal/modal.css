@@ -3,8 +3,10 @@
     min-width: 300px;
     min-height: 200px;
     max-width: 700px;
-    max-height: 450px;
-    background: rgba(0, 0, 0, 0.564)
+    max-height: 500px;
+    height: 500px;
+    width: 500px;
+    background: rgba(0, 0, 0, 0.482)
     url("https://1.bp.blogspot.com/-ytWLnfAbNMY/Xrtw_0sn6DI/AAAAAAAAvUs/oP0xlUqH5RUJ-4HqDczPOsLTX-WhlH57ACLcBGAsYHQ/s2560/books_library_shelves_138556_1080x1920.jpg");
     background-size: 100%;
     background-position: 100%;
@@ -12,7 +14,7 @@
     position: relative;
     border-radius: 10px;
     box-sizing: border-box;
-    box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.6);
+    box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.769);
   }
   
   .Modal__close {
@@ -31,7 +33,7 @@
     color: white;
     transform: rotate(45deg);
     transition: all 1s;
-    background-color: rgba(0, 0, 0, 0.2);
+    background-color: rgba(0, 0, 0, 0.648);
     z-index: 1;
   }
   

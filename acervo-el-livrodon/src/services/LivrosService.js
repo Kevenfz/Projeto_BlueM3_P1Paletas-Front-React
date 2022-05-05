@@ -7,10 +7,17 @@ export const LivroService = {
     fetch(Api.livroLista(), { method: "GET" }).then(parseTransformLista),
 
   getById: (id) =>
-    fetch(Api.livroById(), { method: "GET" }).then(parseResponse),
+    fetch(Api.livroById(id), { method: "GET" }).then(parseTransformItem),
 
-  create: () =>
-    fetch(Api.createLivro(), { method: "POST" }).then(parseResponse),
+  create: (livro) =>
+    fetch(Api.createLivro(), {
+      method: "POST",
+      body: JSON.stringify(livro),
+      mode: "cors",
+      headers: {
+        "Content-Type": "application/json",
+      },
+    }).then(parseResponse),
 
   update: (id) =>
     fetch(Api.updateLivroById(), { method: "PUT" }).then(parseResponse),
@@ -20,18 +27,14 @@ export const LivroService = {
 };
 
 const transformLivro = (livro) => {
-  //TODO refatorar para adicionar se possui brinde ou não
-  // const [brinde] = livro.brinde.push()
-
   return {
     ...livro,
     id: livro._id,
-    // ...(brinde),
-    // possuiBrinde: Boolean(brinde)
   };
 };
 
 const parseTransformLista = (response) =>
   parseResponse(response).then((livros) => livros.map(transformLivro));
 
-// const parseTransformItem = (response) => parseResponse(response).then(transformLivro);
+const parseTransformItem = (response) =>
+  parseResponse(response).then(transformLivro);

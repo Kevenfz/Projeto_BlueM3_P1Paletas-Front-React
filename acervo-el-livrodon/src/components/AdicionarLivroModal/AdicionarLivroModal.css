@@ -1,0 +1,78 @@
+.AdicionaLivroModal {
+    font-family: "Exo";
+    border-radius: 10px;
+    max-height: 350px;
+    box-sizing: border-box;
+    width: 325px;
+    display: flex;
+    position: relative;
+    transform: translateY(-15px);
+    margin-right: -45px;
+  }
+  
+  .AdicionaLivroModal form div {
+    display: flex;
+    margin: 15px 0;
+  }
+  
+  .AdicionaLivroModal form {
+    width: 100%;
+    color: #fff;
+
+  }
+  
+  .AdicionaLivroModal div input {
+    border: none;
+    background: rgba(255, 255, 255, 0.395);
+    color: #fff;
+    width: 100%;
+    margin-left: 15px;
+    border-radius: 5px;
+    height: 20px;
+    padding: 2px 10px;
+  }
+
+  .AdicionaLivroModal div input::placeholder {
+    font-size: 1.1em;
+    color: #00000086;
+    font-weight: 600;
+  }
+  
+  .AdicionaLivroModal__text {
+    font-size: 1em;
+    line-height: 100%;
+  }
+  
+  .AdicionaLivroModal__capa-label {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    background: rgba(255, 255, 255, 0.395);
+    border-radius: 5px;
+    color: #01d9ff;
+    cursor: pointer;
+    padding: 5px 10px;
+  }
+  
+  .AdicionaLivroModal__capa {
+    display: none;
+  }
+  
+  .AdicionaLivroModal__enviar {
+    background-color: #04b2d1;
+    cursor: pointer;
+    color: black;
+    width: 100%;
+    border-radius: 5px;
+    border: none;
+    padding: 5px;
+  }
+
+  .AdicionaLivroModal__enviar:hover {
+    color: #fff;
+    background-color: #01d9ff;
+  }
+  
+  .AdicionaLivroModal__enviar:disabled {
+    background-color: gray;
+  }
