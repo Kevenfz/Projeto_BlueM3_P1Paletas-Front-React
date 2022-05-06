@@ -1,10 +1,9 @@
 import { useState, useEffect } from "react";
 import { Modal } from "../Modal/modal";
 import { LivroService } from "../../services/LivrosService";
-import "./AdicionarLivroModal.css";
-//TODO ADICIONAR O CSS
+import "./AdicionaEditaLivroModal.css";
 
-export function AdicionaLivroModal({ closeModal, oneCreateLivro }) {
+export function AdicionaEditaLivroModal({ closeModal, oneCreateLivro }) {
   const form = {
     titulo: "",
     autor: "",

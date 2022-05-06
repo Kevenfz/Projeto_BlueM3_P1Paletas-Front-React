@@ -42,12 +42,13 @@
 
 .Sacola__icone {
   cursor: pointer;
+  height: 63px;
 }
 
-.Sacola__icone:hover {
-  transform: scale(1.3);
+/* .Sacola__icone:hover {
+  transform: scale(1.1);
   transition: all 0.3s ease-in-out;
-}
+} */
 
 .Sacola__badge {
   background-color: red;
@@ -70,6 +71,18 @@
   .Header {
     max-width: 720px;
   }
+  
+  .Opcoes {
+    top: -50px;
+    left: 170px;
+    display: flex;
+    flex-direction: column-reverse;
+    gap: .5rem;
+  }
+
+  .Sacola {
+    left: 137px;
+  }
 
 }
 
@@ -83,6 +96,7 @@
     flex-direction: column;
     row-gap: 20px;
   }
+
 }
 
 @media (max-width: 400px) {
@@ -101,25 +115,37 @@
   .Logo__titulo {
     font-size: 1.5em;
   }
+  
 }
 
 .Opcoes {
+  position: relative;
   display: flex;
+  gap: .6rem;
 }
 
 .Livro {
   background: none;
   border: none;
-
+  transform: translateY(-3px);
+  border-radius: 10px;
+  transition: all .5s;
+  padding: 0;
 }
 
 .Livro__icone {
   cursor: pointer;
+  /* transform: translateY(-1px); */
 }
 
-.Livro__icone:hover {
-  transform: scale(1.3);
+/* .Livro__icone:hover {
+  transform: scale(1.1);
   transition: all 0.3s ease-in-out;
   fill: #fff;
 
+} */
+
+.Livro--ativo {
+  background: #02d9ffd3;
+  width: 50px;
 }

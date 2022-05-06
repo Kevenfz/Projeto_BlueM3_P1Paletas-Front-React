@@ -9,6 +9,8 @@
   margin-bottom: -6rem;
   margin-left: 35px;
   cursor: pointer;
+  position: relative;
+  transition: all 0.5s;
 }
 
 @media (max-width: 400px) {
@@ -18,11 +20,62 @@
   }
 }
 
+.LivroListaItem--disable {
+  box-shadow: 0px 0px 7px #01d9ff;
+}
+
+.LivroListaItem--disable,
+.LivroListaItem--disable .LivroListaItem__preco {
+  color: gray;
+}
+
+.LivroListaItem--disable .LivroListaItem__badge {
+  display: none;
+}
+
+.LivroListaItem--disable img {
+  filter: grayscale(100%);
+}
+
+.LivroListaItem--disable button:disabled {
+  background-color: gray;
+}
+
+.LivroListaItem__tag {
+  background-color:  #01d9ffcc !important;
+  color: white !important;
+  position: absolute;
+  font-size: 0.7em;
+  border-radius: 5px;
+  padding: 5px;
+  top: -15px;
+  left: -10px;
+  letter-spacing: 1px;
+}
+
+.LivroListaItem__badge {
+  background-color: greenyellow;
+  width: 20px;
+  height: 20px;
+  text-align: center;
+  vertical-align: middle;
+  position: absolute;
+  color: black;
+  font-size: 0.8em;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 50%;
+  top: -9px;
+  left: -9px;
+}
+
 .LivroListaItem > div {
   display: flex;
   justify-content: space-between;
   flex-direction: column;
   margin: 0.3rem;
+  width: 100%;
 }
 
 .LivroListaItem__titulo {
@@ -30,10 +83,6 @@
   font-weight: 700;
   line-height: 100%;
   margin-bottom: 0.5rem;
-}
-
-.LivroListaItem__descricao {
-  font-size: 0.85em;
 }
 
 .LivroListaItem__autor {

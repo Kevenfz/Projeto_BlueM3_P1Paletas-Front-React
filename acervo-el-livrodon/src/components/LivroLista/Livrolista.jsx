@@ -4,7 +4,7 @@ import { LivroListaItem } from "../LivroListaItem/LivroListaItem";
 import { LivroService } from "../../services/LivrosService";
 import { LivroDetalhesModal } from "../LivroDetalhesModal/LivroDetalhesModal";
 
-export function LivroLista({ livroCriado }) {
+export function LivroLista({ livroCriado, mode }) {
   const [livros, setLivros] = useState([]);
   const [livroSelecionado, setLivroSelecionado] = useState({});
   const [livroModal, setLivroModal] = useState(false);
@@ -52,6 +52,7 @@ export function LivroLista({ livroCriado }) {
     <div className="LivroLista">
       {livros.map((livro, index) => (
         <LivroListaItem
+          mode={mode}
           key={`LivroListaItem-${index}`}
           livro={livro}
           quantidadeSelecionado={livroSelecionado[index]}
