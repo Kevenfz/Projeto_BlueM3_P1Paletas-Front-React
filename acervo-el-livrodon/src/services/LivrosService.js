@@ -19,8 +19,15 @@ export const LivroService = {
       },
     }).then(parseResponse),
 
-  update: (id) =>
-    fetch(Api.updateLivroById(), { method: "PUT" }).then(parseResponse),
+  updtateById: (id, livro) =>
+    fetch(Api.updateLivroById(id), {
+      method: "PUT",
+      body: JSON.stringify(livro),
+      mode: "cors",
+      headers: {
+        "Content-Type": "application/json",
+      },
+    }).then(parseResponse),
 
   delete: (id) =>
     fetch(Api.deleteLivroById(), { method: "DELETE" }).then(parseResponse),

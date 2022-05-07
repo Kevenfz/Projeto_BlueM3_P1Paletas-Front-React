@@ -1,10 +1,11 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useCallback } from "react";
 import "./LivroLista.css";
 import { LivroListaItem } from "../LivroListaItem/LivroListaItem";
 import { LivroService } from "../../services/LivrosService";
 import { LivroDetalhesModal } from "../LivroDetalhesModal/LivroDetalhesModal";
+import { ActionMode } from "../../constants/index";
 
-export function LivroLista({ livroCriado, mode }) {
+export function LivroLista({ livroCriado, mode, updateLivro, deleteLivro }) {
   const [livros, setLivros] = useState([]);
   const [livroSelecionado, setLivroSelecionado] = useState({});
   const [livroModal, setLivroModal] = useState(false);
@@ -17,7 +18,14 @@ export function LivroLista({ livroCriado, mode }) {
 
   const getLivroById = async (livroId) => {
     const response = await LivroService.getById(livroId);
-    setLivroModal(response);
+
+    const mapper = {
+      [ActionMode.NORMAL]: () => setLivroModal(response),
+      [ActionMode.ATUALIZAR]: () => updateLivro(response),
+      [ActionMode.DELETAR]: () => deleteLivro(response),
+    };
+
+    mapper[mode]();
   };
 
   const onAdd = (livroIndex) => {
@@ -34,14 +42,19 @@ export function LivroLista({ livroCriado, mode }) {
     setLivroSelecionado({ ...livroSelecionado, ...livro });
   };
 
-  const adicionaLivroNaLista = (livro) => {
-    const lista = [...livros, livro];
-    setLivros(lista);
-  };
+  const adicionaLivroNaLista = useCallback(
+    (livro) => {
+      const lista = [...livros, livro];
+      setLivros(lista);
+    },
+    [livros]
+  );
 
   useEffect(() => {
-    if (livroCriado) adicionaLivroNaLista(livroCriado);
-  }, [livroCriado]);
+    if (livroCriado && !livros.map(({ id }) => id).includes(livroCriado.id)) {
+      adicionaLivroNaLista(livroCriado);
+    }
+  }, [adicionaLivroNaLista, livroCriado, livros]);
 
   //Executa a função que busca os dados da nosso backend uma vez
   useEffect(() => {

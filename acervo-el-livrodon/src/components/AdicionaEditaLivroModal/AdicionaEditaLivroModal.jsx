@@ -2,14 +2,21 @@ import { useState, useEffect } from "react";
 import { Modal } from "../Modal/modal";
 import { LivroService } from "../../services/LivrosService";
 import "./AdicionaEditaLivroModal.css";
+import { ActionMode } from "../../constants/index";
 
-export function AdicionaEditaLivroModal({ closeModal, oneCreateLivro }) {
+export function AdicionaEditaLivroModal({
+  closeModal,
+  onCreateLivro,
+  mode,
+  livroToUpdate,
+  onUpdateLivro,
+}) {
   const form = {
-    titulo: "",
-    autor: "",
-    preco: "",
-    capa: "",
-    descricao: "",
+    titulo: livroToUpdate?.titulo ?? "",
+    autor: livroToUpdate?.autor ?? "",
+    preco: livroToUpdate?.preco ?? "",
+    capa: livroToUpdate?.capa ?? "",
+    descricao: livroToUpdate?.descricao ?? "",
   };
 
   const [state, setState] = useState(form);
@@ -24,7 +31,7 @@ export function AdicionaEditaLivroModal({ closeModal, oneCreateLivro }) {
     const response = !Boolean(
       state.titulo.length &&
         state.autor.length &&
-        state.preco.length &&
+        String(state.preco).length &&
         state.capa.length &&
         state.descricao.length
     );
@@ -36,12 +43,13 @@ export function AdicionaEditaLivroModal({ closeModal, oneCreateLivro }) {
     canDisableSendButton();
   });
 
-  const createLivro = async () => {
-    const renomeiaCaminhoCapa = (capaPath) => capaPath.split("\\").pop();
+  const handleSend = async () => {
+    const renomeiaCaminhoCapa = (capaPath) => capaPath.split("/\\|//").pop();
 
     const { titulo, autor, preco, capa, descricao } = state;
 
     const livro = {
+      ...(livroToUpdate && { _id: livroToUpdate?.id }),
       titulo,
       autor,
       preco,
@@ -49,8 +57,31 @@ export function AdicionaEditaLivroModal({ closeModal, oneCreateLivro }) {
       descricao,
     };
 
-    const response = await LivroService.create(livro);
-    oneCreateLivro(response);
+    const serviceCall = {
+      [ActionMode.NORMAL]: () => LivroService.create(livro),
+      [ActionMode.ATUALIZAR]: () =>
+        LivroService.updtateById(livroToUpdate?.id, livro),
+    };
+
+    const response = await serviceCall[mode]();
+
+    const actionResponse = {
+      [ActionMode.NORMAL]: () => onCreateLivro(response),
+      [ActionMode.ATUALIZAR]: () => onUpdateLivro(response),
+    };
+
+    actionResponse[mode]();
+
+    const reset = {
+      titulo: "",
+      autor: "",
+      preco: "",
+      capa: "",
+      descricao: "",
+    };
+
+    setState(reset);
+
     closeModal();
   };
 
@@ -58,7 +89,11 @@ export function AdicionaEditaLivroModal({ closeModal, oneCreateLivro }) {
     <Modal closeModal={closeModal}>
       <div className="AdicionaLivroModal">
         <form autocomplete="off">
-          <h2> Adicionar ao Acervo </h2>
+          <h2>
+            {" "}
+            {ActionMode.ATUALIZAR === mode ? "Atualizar" : "Adicionar ao"}{" "}
+            Acervo{" "}
+          </h2>
           <div>
             <label className="AdicionaLivroModal__text" htmlFor="titulo">
               {" "}
@@ -126,7 +161,6 @@ export function AdicionaEditaLivroModal({ closeModal, oneCreateLivro }) {
               id="capa"
               type="file"
               accept="image/png, image/gif, image/jpeg"
-              value={state.capa}
               onChange={(e) => handleChange(e, "capa")}
             />
           </div>
@@ -135,9 +169,9 @@ export function AdicionaEditaLivroModal({ closeModal, oneCreateLivro }) {
             className="AdicionaLivroModal__enviar"
             type="button"
             disabled={canDisable}
-            onClick={createLivro}
+            onClick={handleSend}
           >
-            Enviar
+            {ActionMode.NORMAL === mode ? "Enviar" : "Atualizar"}
           </button>
         </form>
       </div>

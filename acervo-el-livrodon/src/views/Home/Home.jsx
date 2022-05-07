@@ -6,6 +6,8 @@ import { AdicionaEditaLivroModal } from "../../components/AdicionaEditaLivroModa
 import { useState } from "react";
 import { ActionMode } from "../../constants/index";
 
+//TODO criar o carrinho no backend 
+
 export function Home() {
   const [canShowAdicionaLivroModal, setCanShowAdicionaLivroModal] =
     useState(false);
@@ -19,6 +21,25 @@ export function Home() {
     setModoAtual(novaAcao);
   };
 
+  const [livroParaEditar, setLivroParaEditar] = useState();
+  const [livroParaDeletar, setLivroParaDeletar] = useState();
+
+  const handleDeleteLivro = (livroToDelete) => {
+    setLivroParaDeletar(livroToDelete);
+  }
+
+  const handleUpdateLivro = (livroToUpdate) => {
+    setLivroParaEditar(livroToUpdate);
+    setCanShowAdicionaLivroModal(true);
+  }
+
+  const handleCloseModal = () => {
+    setCanShowAdicionaLivroModal(false)
+    setLivroParaAdicionar();
+    setLivroParaDeletar();
+    setLivroParaEditar();
+  }
+
   return (
     <div className="Home">
       <Navbar
@@ -29,11 +50,15 @@ export function Home() {
       <div className="Home__container">
         <LivroLista 
         mode={modoAtual}
-        livroCriado={livroParaAdicionar} />
+        livroCriado={livroParaAdicionar}
+        deleteLivro={handleDeleteLivro}
+        updateLivro={handleUpdateLivro} />
 
         {canShowAdicionaLivroModal && (
           <AdicionaEditaLivroModal
-            closeModal={() => setCanShowAdicionaLivroModal(false)}
+            mode={modoAtual}
+            livroToUpdate={livroParaEditar}
+            closeModal={handleCloseModal}
             oneCreateLivro={(livro) => setLivroParaAdicionar(livro)}
           />
         )}
