@@ -30,14 +30,23 @@ export function LivroListaItem({
     );
 
   const badgeAction = (canRender) => {
-    if (canRender) return <span className="LivroListaItem__tag"> {mode} </span>;
+    if (canRender)
+      return (
+        <span
+          className={`LivroListaItem__tag ${
+            mode === ActionMode.DELETAR && "LivroListaItem__tag--deletar"
+          }`}
+        >
+          { mode }
+        </span>
+      );
   };
 
   return (
     <div
-      className={`LivroListaItem ${
-        mode !== ActionMode.NORMAL && "LivroListaItem--disable"
-      }`}
+      className={`LivroListaItem 
+      ${mode !== ActionMode.NORMAL && "LivroListaItem--disable"}
+      ${mode === ActionMode.DELETAR && "LivroListaItem--deletar"}`}
       onClick={() => clickItem(livro.id)}
     >
       {badgeCounter(quantidadeSelecionado, index)}

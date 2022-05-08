@@ -53,6 +53,14 @@
   letter-spacing: 1px;
 }
 
+.LivroListaItem__tag--deletar {
+  background-color: red !important;
+}
+
+.LivroListaItem--deletar {
+  box-shadow: 0px 0px 7px rgba(211, 0 ,0);
+}
+
 .LivroListaItem__badge {
   background-color: greenyellow;
   width: 20px;

@@ -29,8 +29,8 @@ export const LivroService = {
       },
     }).then(parseResponse),
 
-  delete: (id) =>
-    fetch(Api.deleteLivroById(), { method: "DELETE" }).then(parseResponse),
+    deleteById: (id) =>
+    fetch(Api.deleteLivroById(id), { method: "DELETE" }).then(parseResponse),
 };
 
 const transformLivro = (livro) => {

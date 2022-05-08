@@ -147,5 +147,8 @@
 
 .Livro--ativo {
   background: #02d9ffd3;
-  width: 50px;
+}
+
+.Livro--deletar {
+  background: rgba(211, 0, 0);
 }

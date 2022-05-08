@@ -44,7 +44,7 @@ export function AdicionaEditaLivroModal({
   });
 
   const handleSend = async () => {
-    const renomeiaCaminhoCapa = (capaPath) => capaPath.split("/\\|//").pop();
+    const renomeiaCaminhoCapa = (capaPath) => capaPath.split(/\\|\//).pop();
 
     const { titulo, autor, preco, capa, descricao } = state;
 

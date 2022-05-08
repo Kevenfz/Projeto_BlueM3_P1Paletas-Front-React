@@ -4,8 +4,9 @@ import sacola from "../../assets/icons/sacola.png";
 import logo from "../../assets/LogoElLivrodon.png";
 import livro from "../../assets/icons/livro.png";
 import updateBook from "../../assets/icons/updateLivro.png";
+import deleteBook from "../../assets/icons/deleteLivro.png";
 
-export function Navbar({ createLivro, updateLivro, mode }) {
+export function Navbar({ createLivro, updateLivro, mode, deleteLivro, openBag }) {
   return (
     <div className="Home__header Header">
       <div div className="row">
@@ -47,7 +48,23 @@ export function Navbar({ createLivro, updateLivro, mode }) {
               alt="Adiconar Livro"
             />
           </button>
-          <div className="Opcoes__sacola Sacola">
+
+          <button
+            type="button"
+            className={`Opcoes__livro Livro ${
+              mode === ActionMode.DELETAR && "Livro--deletar"
+            }`}
+            onClick={() => deleteLivro()}
+          >
+            <img
+              src={deleteBook}
+              width="45px"
+              className="Livro__icone"
+              alt="Editar Livro"
+            />
+          </button>
+
+          <div className="Opcoes__sacola Sacola" onClick={openBag}>
             <img
               src={sacola}
               width="57px"

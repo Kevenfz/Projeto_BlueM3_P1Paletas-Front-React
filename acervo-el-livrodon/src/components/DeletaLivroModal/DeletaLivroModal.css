@@ -1,0 +1,48 @@
+.DeletaLivroModal {
+    margin-top: -250px;
+    font-size: 1.3em;
+  }
+  
+  .DeletaLivroModal > div {
+    display: flex;
+    justify-content: space-between;
+    position: relative;
+  }
+  
+  .DeletaLivroModal__capa {
+    position: absolute;
+    right: 320px;
+    top: 250px;
+    width: 150px;
+  }
+
+  .DeletaLivroModal__descricao {
+    position: absolute;
+    width: 50%;
+    left: 210px;
+    top: 250px;
+    font-size: .9em;
+  }
+  
+  .DeletaLivroModal__confirmar,
+  .DeletaLivroModal__cancelar {
+    border: none;
+    border-radius: 5px;
+    font-family: "Exo", sans-serif;
+    padding: 5px;
+    max-width: 280px;
+    text-align: center;
+    font-weight: 700;
+    text-transform: uppercase;
+    cursor: pointer;
+    width: 48%;
+    color: white;
+  }
+  
+  .DeletaLivroModal__confirmar {
+    background-color: #01d9ffda;
+  }
+  
+  .DeletaLivroModal__cancelar {
+    background-color: red;
+  }

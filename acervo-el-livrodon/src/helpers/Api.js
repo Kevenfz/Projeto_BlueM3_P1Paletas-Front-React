@@ -7,7 +7,14 @@ const LivroContext = {
   deleteLivroById: (id) => `${LivroContext.livroEndpoint()}/delete-livro/${id}`,
 };
 
+const SacolaContext = {
+  getSacola: () => `${LivroContext.livroEndpoint()}/all-carrinho`,
+  createSacola: () => `${LivroContext.livroEndpoint()}/create-carrinho`,
+  purchase: () => `${LivroContext.livroEndpoint()}/finish-carrinho`,
+};
+
 export const Api = {
   baseUrl: "http://localhost:3333",
   ...LivroContext,
+  ...SacolaContext,
 };
