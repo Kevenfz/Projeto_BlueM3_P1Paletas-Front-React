@@ -3,6 +3,22 @@
     grid-template-columns: repeat(3, 1fr);
     grid-gap: 25px 50px;
   }
+
+  .LivroLista-filtro {
+    margin-left: 1rem;
+    margin-top: 7rem;
+    border: none;
+    background: rgba(0, 0, 0, 0.539);
+    width: 100%;
+    border-radius: 5px;
+    height: 40px;
+    padding: 2px 10px;
+    color: #fff;
+  }
+
+  .LivroLista-filtro::placeholder{
+    color: rgb(154, 154, 154);
+  }
   
   @media (max-width: 1220px) {
     .LivroLista {
@@ -15,7 +31,5 @@
       grid-template-columns: 1fr;
     }
   }
-  
-  
 
   

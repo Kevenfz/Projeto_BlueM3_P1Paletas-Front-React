@@ -20,12 +20,7 @@ export function AdicionaEditaLivroModal({
   };
 
   const [state, setState] = useState(form);
-
-  const handleChange = (e, name) => {
-    setState({ ...state, [name]: e.target.value });
-  };
-
-  const [canDisable, setCanDisable] = useState(true);
+  const [canDisable, setCanDisable] = useState(false);
 
   const canDisableSendButton = () => {
     const response = !Boolean(
@@ -38,11 +33,11 @@ export function AdicionaEditaLivroModal({
 
     setCanDisable(response);
   };
-
-  useEffect(() => {
-    canDisableSendButton();
-  });
-
+  
+  const handleChange = (e, name) => {
+    setState({ ...state, [name]: e.target.value });
+  };
+ 
   const handleSend = async () => {
     const renomeiaCaminhoCapa = (capaPath) => capaPath.split(/\\|\//).pop();
 
@@ -56,7 +51,7 @@ export function AdicionaEditaLivroModal({
       capa: `assets/img/${renomeiaCaminhoCapa(capa)}`,
       descricao,
     };
-
+  
     const serviceCall = {
       [ActionMode.NORMAL]: () => LivroService.create(livro),
       [ActionMode.ATUALIZAR]: () =>
@@ -85,10 +80,14 @@ export function AdicionaEditaLivroModal({
     closeModal();
   };
 
+  useEffect(() => {
+    canDisableSendButton();
+  });
+
   return (
     <Modal closeModal={closeModal}>
       <div className="AdicionaLivroModal">
-        <form autocomplete="off">
+        <form autoComplete="off">
           <h2>
             {" "}
             {ActionMode.ATUALIZAR === mode ? "Atualizar" : "Adicionar ao"}{" "}

@@ -3,8 +3,8 @@ import "./modal.css"
 
 export function Modal({children, closeModal}) {
     const handleClick = (e, canClose) => {
+        console.log(e);
         e.stopPropagation();
-
         if(canClose) closeModal();
     };
 

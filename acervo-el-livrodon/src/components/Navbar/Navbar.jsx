@@ -60,11 +60,11 @@ export function Navbar({ createLivro, updateLivro, mode, deleteLivro, openBag })
               src={deleteBook}
               width="45px"
               className="Livro__icone"
-              alt="Editar Livro"
+              alt="Deletar Livro"
             />
           </button>
 
-          <div className="Opcoes__sacola Sacola" onClick={openBag}>
+          <div className="Opcoes__sacola Sacola" onClick={openBag} >
             <img
               src={sacola}
               width="57px"

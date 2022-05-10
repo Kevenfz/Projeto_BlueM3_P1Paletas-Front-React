@@ -9,28 +9,31 @@ import { DeletaLivroModal } from "../../components/DeletaLivroModal/DeletaLivroM
 import { SacolaModal } from "../../components/SacolaModal/SacolaModal";
 import { SacolaService } from "../../services/SacolaService";
 
+//TODO onReload onDelete - modais
+
 export function Home() {
   const [canOpenBag, setCanOpenBag] = useState();
-
   const [livroEditado, setLivroEditado] = useState();
-
   const [canShowAdicionaLivroModal, setCanShowAdicionaLivroModal] =
     useState(false);
-
   const [livroParaAdicionar, setLivroParaAdicionar] = useState();
-
   const [livroRemovido, setLivroRemovido] = useState();
-
   const [modoAtual, setModoAtual] = useState(ActionMode.NORMAL);
+  const [livroParaEditar, setLivroParaEditar] = useState();
+  const [livroParaDeletar, setLivroParaDeletar] = useState();
+
+  const abriSacola = async () => {
+    const lista = JSON.stringify(localStorage.getItem('sacola'));
+    const sacola = lista.filter(i => i.quantidade > 0);
+
+    await SacolaService.create(sacola);
+    setCanOpenBag(true);
+  };
 
   const handleActions = (action) => {
     const novaAcao = modoAtual === action ? ActionMode.NORMAL : action;
     setModoAtual(novaAcao);
   };
-
-  const [livroParaEditar, setLivroParaEditar] = useState();
-
-  const [livroParaDeletar, setLivroParaDeletar] = useState();
 
   const handleDeleteLivro = (livroToDelete) => {
     setLivroParaDeletar(livroToDelete);
@@ -39,15 +42,6 @@ export function Home() {
   const handleUpdateLivro = (livroToUpdate) => {
     setLivroParaEditar(livroToUpdate);
     setCanShowAdicionaLivroModal(true);
-  };
-
-  const abriSacola = async () => {
-    const lista = JSON.stringify(localStorage.getItem("sacola"));
-    const sacola = lista.filter((i) => i.quantidade > 0);
-
-    await SacolaService.create(sacola)
-
-    setCanOpenBag(true)
   };
 
   const handleCloseModal = () => {
@@ -63,8 +57,8 @@ export function Home() {
       <Navbar
         mode={modoAtual}
         createLivro={() => setCanShowAdicionaLivroModal(true)}
-        updateLivro={() => handleActions(ActionMode.ATUALIZAR)}
         deleteLivro={() => handleActions(ActionMode.DELETAR)}
+        updateLivro={() => handleActions(ActionMode.ATUALIZAR)}
         openBag={abriSacola}
       />
       <div className="Home__container">
@@ -76,7 +70,6 @@ export function Home() {
           updateLivro={handleUpdateLivro}
           livroRemovido={livroRemovido}
         />
-
         {canShowAdicionaLivroModal && (
           <AdicionaEditaLivroModal
             mode={modoAtual}
@@ -93,10 +86,7 @@ export function Home() {
             onDeletelivro={(livro) => setLivroRemovido(livro)}
           />
         )}
-        {
-          canOpenBag &&
-          <SacolaModal closeModal={() => setCanOpenBag(false)} />
-        }
+        {canOpenBag && <SacolaModal closeModal={() => setCanOpenBag(false)} />}
       </div>
     </div>
   );

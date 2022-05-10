@@ -4,11 +4,11 @@ import { LivroService } from "../../services/LivrosService";
 
 export function DeletaLivroModal({ closeModal, livroParaDeletar, onDeleteLivro }) {
     
-    const handleDelete = async (livro) => {
-      await LivroService.delete(livro.id);
-      onDeleteLivro(livro);
-      closeModal();
-    };
+  const handleDelete = async (livro) => {
+    await LivroService.deleteById(livro._id);
+    onDeleteLivro(livro);
+    closeModal();
+  };
 
   return (
     <Modal closeModal={closeModal}>
