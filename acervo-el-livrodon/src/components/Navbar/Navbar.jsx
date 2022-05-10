@@ -64,7 +64,7 @@ export function Navbar({ createLivro, updateLivro, mode, deleteLivro, openBag })
             />
           </button>
 
-          <div className="Opcoes__sacola Sacola" onClick={openBag} >
+          <div className="Opcoes__sacola Sacola" onClick={openBag}>
             <img
               src={sacola}
               width="57px"

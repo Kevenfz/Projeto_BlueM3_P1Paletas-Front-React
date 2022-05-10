@@ -6,14 +6,12 @@ import { LivroService } from "../../services/LivrosService";
 import { useNavigate } from "react-router-dom";
 
 export function SacolaModal({ closeModal }) {
-
   const [lista, setLista] = useState([]);
   const navigate = useNavigate();
 
-
   const purchase = async () => {
     await SacolaService.purchase();
-    navigate("/loading");
+    navigate('/loading');
   };
 
   const handleClose = async () => {

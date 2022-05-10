@@ -35,7 +35,7 @@ export function AdicionaEditaLivroModal({
   };
   
   const handleChange = (e, name) => {
-    setState({ ...state, [name]: e.target.value });
+    setState({ ...state, [name]: e.target.value});
   };
  
   const handleSend = async () => {

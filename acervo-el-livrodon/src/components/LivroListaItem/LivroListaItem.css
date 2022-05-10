@@ -42,7 +42,7 @@
 }
 
 .LivroListaItem__tag {
-  background-color:  #01d9ffcc !important;
+  background-color:  #01d9ff !important;
   color: white !important;
   position: absolute;
   font-size: 0.7em;
@@ -138,7 +138,7 @@
 }
 
 .Acoes__adicionar {
-  background-color: #008ea7;
+  background-color: #04bbdb;
 }
 
 .Acoes__adicionar:hover {
