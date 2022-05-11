@@ -23,4 +23,3 @@ El Livrodon é um catálogo de livros, onde você pode adicionar, editar, apagar
 
 https://el-livrodon.netlify.app
 
-
